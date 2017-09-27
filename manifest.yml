@@ -2,6 +2,7 @@
 applications:
 - name: spring-music
   memory: 1G
+  buildpack: java_buildpack
   random-route: true
   path: build/libs/spring-music.jar
 
