@@ -2,7 +2,13 @@
 applications:
 - name: spring-music
   memory: 1G
-  buildpack: java_buildpack
+  buildpack: java_buildpack_offline
   random-route: true
   path: build/libs/spring-music.jar
+  env: 
+    JAVA_OPTS: '-Dspring.profiles.active=mysql-local'
+    DB_URL: 'jdbc:mysql://MYIP:3306/mydatabase'
+    DB_DRIVER: 'com.mysql.jdbc.Driver'
+    DB_USERNAME: 'myusername'
+    DB_PASSWORD: 'mypassword'
 
