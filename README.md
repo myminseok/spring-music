@@ -2,14 +2,40 @@
 Spring Music for external mysql db by injecting env variable in manifest.yml
 ============
 
+## local test
 ```
+export    DB_URL='jdbc:mysql://MYIP:3306/mydatabase'
+export    DB_DRIVER='com.mysql.jdbc.Driver'
+export    DB_USERNAME='myusername'
+export    DB_PASSWORD='mypassword'
 
 ./gradlew clean assemble
-./gradlew bootRun
+
+SPRING_PROFILES_ACTIVE=mysql-local ./gradlew bootRun
 
 open http://localhost:8080/
 
+```
+
+## test on PCF
+
+```
 edit manifest.yml
+
+---
+applications:
+- name: spring-music
+  memory: 1G
+  random-route: true
+  path: build/libs/spring-music.jar
+  env: 
+    JAVA_OPTS: '-Dspring.profiles.active=mysql-local'
+    DB_URL: 'jdbc:mysql://MYIP:3306/mydatabase'
+    DB_DRIVER: 'com.mysql.jdbc.Driver'
+    DB_USERNAME: 'myusername'
+    DB_PASSWORD: 'mypassword'
+
+
 
 cf push
 

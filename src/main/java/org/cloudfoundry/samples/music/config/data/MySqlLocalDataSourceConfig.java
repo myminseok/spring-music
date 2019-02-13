@@ -14,6 +14,9 @@ public class MySqlLocalDataSourceConfig extends AbstractLocalDataSourceConfig {
     @Bean
     public DataSource dataSource() {
     	
+        System.out.println("using mysql-local!!!!");
+        
+
     	String DB_URL = System.getenv("DB_URL");
     	String DB_DRIVER = System.getenv("DB_DRIVER");
     	String DB_USERNAME = System.getenv("DB_USERNAME");
