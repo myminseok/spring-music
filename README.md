@@ -40,7 +40,26 @@ applications:
 cf push
 
 ```
+## upgrade gradle wrapper
 
+```
+## install gradle
+## https://docs.gradle.org/5.2.1/userguide/gradle_wrapper.html
+## https://services.gradle.org/distributions/
+
+wget https://services.gradle.org/distributions/gradle-5.1.1-bin.zip
+unzip gradle-5.1.1-bin.zip
+
+cd THIS_PROJECT
+rm -rf gradle*
+rm -rf .gradle
+<unzip dir gradle-5.1.1-bin.zip>/bin/gradle wrapper
+
+
+./gradlew -v
+./gradlew build
+
+```
 
 
 Spring Music
