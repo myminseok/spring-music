@@ -1,0 +1,15 @@
+---
+applications:
+- name: spring-music
+  memory: 1G
+  buildpacks: 
+  - https://github.com/myminseok/pinpoint-buildpack
+  - java_buildpack_offline
+  random-route: true
+  #path: build/libs/spring-music.jar
+  path: ./spring-music.jar
+#  env:
+#    PINPOINT_AGENT_PACKAGE_DOWNLOAD_URL: https://github.com/myminseok/pinpoint_agent_repo/blob/master/pinpoint-agent-1.8.2.tar.gz?raw=true
+#    PINPOINT_CONFIG_URL: https://raw.githubusercontent.com/myminseok/pinpoint_agent_repo/master/pinpoint.config
+
+

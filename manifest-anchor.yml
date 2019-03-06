@@ -1,0 +1,14 @@
+---
+defaults: &defaults
+  buildpack: staticfile_buildpack
+  memory: 1G
+
+applications:
+- name: spring-music2
+  <<: *defaults
+  instances: 1
+  host: spring-music
+  path: build/libs/spring-music.war
+  env:
+      JAVA_OPTS: -Djava.security.egd=file:///dev/urandom
+
