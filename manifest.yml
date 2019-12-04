@@ -8,4 +8,8 @@ applications:
   #path: build/libs/spring-music.jar
   path: ./spring-music.jar
 
+  #env:
+  #JBP_CONFIG_TOMCAT : ‘[tomcat: {contrxt_path: “/new”}]’
+
+
 
