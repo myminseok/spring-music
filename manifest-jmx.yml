@@ -1,12 +1,13 @@
----
 applications:
 - name: spring-music
   memory: 1G
-  random-route: true
   path: ./spring-music-mkim-1.0.jar
   env:
     JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
     SPRING_PROFILES_ACTIVE: http2
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 17.+ } }'
-
-    JAVA_OPTS: '-XX:+AlwaysPreTouch'
+    JBP_CONFIG_DEBUG: '{enabled: true}'
+    ## https://github.com/cloudfoundry/java-buildpack/blob/main/docs/framework-jmx.md
+    ## cf ssh -L 5000:localhost:5000 spring-music
+    ## jconsole
+    JBP_CONFIG_JMX: '{enabled: true, port: 5000}'
