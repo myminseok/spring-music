@@ -1,6 +1,7 @@
 plugins {
-    id 'org.springframework.boot' version '3.1.5'
+    id 'org.springframework.boot' version '3.3.0' // for CDS
     id 'io.spring.dependency-management' version '1.1.3'
+    id 'org.springframework.boot.aot' version '3.3.0' // Add this line
     id 'java'
     id 'eclipse-wtp'
     id 'idea'
@@ -9,7 +10,7 @@ plugins {
 group = 'org.cloudfoundry.samples.music'
 
 java {
-    sourceCompatibility = '17'
+    sourceCompatibility = '21'
 }
 
 repositories {
@@ -59,8 +60,8 @@ dependencies {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 
     if (JavaVersion.current() != project.targetCompatibility) {
         logger.warn("The build is using Java ${JavaVersion.current()} to build a Java ${project.targetCompatibility} compatible archive.")
@@ -74,4 +75,6 @@ jar {
 
 tasks.named("bootBuildImage") {
     builder = "paketobuildpacks/builder-jammy-base:latest"
+	environment["BP_JVM_CDS_ENABLED"] = "true"
+	environment["BP_SPRING_AOT_ENABLED"] = "true"
 }

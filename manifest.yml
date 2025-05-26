@@ -1,10 +1,13 @@
 ---
 applications:
-- name: spring-music
+- name: spring-music-cds
   memory: 1G
-  random-route: true
+  random-route: false 
   path: build/libs/spring-music-1.0.jar
   env:
+    JBP_CONFIG_DEBUG: '{enabled: true}'
+    LOGGING_LEVEL_ORG_CLOUDFOUNDRY_SECURITY: "DEBUG"
     JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
     SPRING_PROFILES_ACTIVE: http2
-    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 17.+ } }'
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 21.+ } }'
+    JBP_CONFIG_SPRING_BOOT_EFFICIENCY: '{ aot_enabled: true, cds_enabled: true }'
